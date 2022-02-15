@@ -1,6 +1,8 @@
 #!/bin/bash
 
+source /home/achern/yodo/bash_scripting/.env
 
+tg="/home/achern/yodo/bash_scripting/telegram.sh"
 backup_list=$(ls /home/achern/Yandex.Disk/ | grep backup)
 days=5
 #echo $backup_list
@@ -27,3 +29,4 @@ for file in $backup_list; do
     fi
 done
 
+$tg "backup-rotate.sh удалил файлы" > /dev/null
