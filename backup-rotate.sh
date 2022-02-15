@@ -10,12 +10,11 @@ days=5
 month=$(date +"%m")
 
 ed="date +\"%Y-%m-%d\" -d '-"$days" day'"
-echo $ed
-eval $ed
+#echo $ed
 expire_date=`eval $ed`".tar.gz"
 echo "expire_date: $expire_date"
 
-echo "Удаляем бекапы, старше $(date +"%d.%m.%Y" -d '-13 day') expire_date: $expire_date"
+echo "Удаляем бекапы, старше "`eval $ed`" expire_date: $expire_date"
 
 for file in $backup_list; do
     backup_date=$(echo $file | awk -F"_" '{print $2}')
